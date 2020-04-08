@@ -1,0 +1,4 @@
+/opt/repo/spring-boot-postgres-sample/src/main/java/org/jug/algeria/controller/HomeController.java
+/opt/repo/spring-boot-postgres-sample/src/main/java/org/jug/algeria/Application.java
+/opt/repo/spring-boot-postgres-sample/src/main/java/org/jug/algeria/repository/UserRepository.java
+/opt/repo/spring-boot-postgres-sample/src/main/java/org/jug/algeria/domain/AppUser.java

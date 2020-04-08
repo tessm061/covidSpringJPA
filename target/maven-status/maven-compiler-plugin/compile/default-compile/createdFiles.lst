@@ -1,0 +1,4 @@
+org/jug/algeria/controller/HomeController.class
+org/jug/algeria/domain/AppUser.class
+org/jug/algeria/Application.class
+org/jug/algeria/repository/UserRepository.class

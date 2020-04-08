@@ -1,0 +1,13 @@
+#
+# [ Database Configuration Section ]
+#
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:APP_USERS;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=false
+    username: postgres
+    password: postgres
+server:
+  port: 5432
+
+
