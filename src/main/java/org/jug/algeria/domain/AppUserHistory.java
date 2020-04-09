@@ -14,13 +14,15 @@ import java.lang.*;
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @Data
 @RequiredArgsConstructor
-public class AppUser {
+public class AppUserHistory {
 
-  @Id 
-  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Id @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
+  private int revision;
 
+  private Long userId;
+ 
   @NotNull
   private String username;
 

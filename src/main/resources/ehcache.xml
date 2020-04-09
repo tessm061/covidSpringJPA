@@ -1,0 +1,10 @@
+<ehcache updateCheck="false" monitoring="autodetect"
+     dynamicConfig="true">
+
+  <defaultCache
+        maxElementsInMemory="100000"
+        maxElementsOnDisk="10000000"
+        eternal="true"
+        overflowToDisk="false">
+  </defaultCache>
+</ehcache>
