@@ -10,6 +10,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.hibernate.envers.*;
+
+import javax.persistence.*;
+
 import javax.inject.Inject;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,13 +24,15 @@ import java.util.function.Consumer;
 @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
 public class HomeController {
 
+  //Autowired for setup
   @Autowired
   private UserRepository userRepository;
 
   @Autowired
   private UserHistoryRepository userHistoryRepository;
 
-
+  @PersistenceContext
+  private EntityManager entityManager;
 
   @GetMapping
   public ModelAndView home() {
@@ -61,8 +67,24 @@ public class HomeController {
     AppUser appUser = new AppUser();
     appUser.setUsername(username);
     AppUser saved = userRepository.save(appUser);
+    saved.setUsername("Tyler");
+    AppUser saved2 = userRepository.save(saved);
     saveHistory(saved);
-    return ResponseEntity.ok().body(saved);
+    return ResponseEntity.ok().body(saved2);
+  }
+
+ @GetMapping(value = "/user/prod/history/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<AppUser> findHistoryByProdId( @PathVariable Long id) {
+    AuditReader reader = AuditReaderFactory.get(entityManager);
+    AppUser all = reader.find(AppUser.class, id, 1);
+    return ResponseEntity.ok().body(all);
+  }
+ 
+
+ @GetMapping(value = "/user/prod/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<AppUser> findByProdId() {
+    final Optional<AppUser> all = userRepository.findById(1L);
+    return ResponseEntity.ok().body(all.get());
   }
 
 

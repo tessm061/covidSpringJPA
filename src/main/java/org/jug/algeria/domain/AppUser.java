@@ -20,7 +20,7 @@ public class AppUser {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
 
-
+  @Audited
   @NotNull
   private String username;
 
